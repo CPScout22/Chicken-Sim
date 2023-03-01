@@ -1,0 +1,56 @@
+import pygame
+import random
+
+
+class  chikn:
+    def __init__(self, name):
+        self.name = name
+        self.hunger = 0
+        
+    def pet(self):
+        print("chkin.")
+    
+    def feed(self):
+        self.hunger += 10
+            
+    def update(self):
+        self.hunger -= 5 
+        chance = random.randrange(0, 10)
+        if self.hunger < 30:
+            if chance <= 5:
+                print("bok bok")
+                return 1
+            elif chance >= 6:
+                return 0
+                
+            
+    def printinfo(self):
+        print("chikn", self.name, self.hunger)
+
+pet1 = chikn("Vanessa")
+pet2 = chikn("Tom")
+pet3 = chikn("Whiskers")
+print("welcome to the hamster simulator")
+print()
+#game loop##########################################
+while True:
+    choice = int(input("press 1 to feed Vanessa, 2 to feed Tom, 3 to feed Whiskers, 4 to pet with them and 5 to check info"))
+    if choice == 1:
+        pet1.feed()
+    elif choice == 2:
+        pet2.feed()
+    elif choice == 3:
+        pet3.feed()
+    elif choice == 4:
+        pet1.pet()
+        pet2.pet()
+        pet3.pet()
+    else:
+        pet1.printInfo()
+        pet2.printInfo()
+        pet3.printInfo()
+    
+    pet1.update()
+    pet2.update()
+    pet3.update()
+#end game loop################################################
